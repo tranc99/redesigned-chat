@@ -39,6 +39,10 @@ class App {
       .on("keypress", e => {
         if (e.keyCode == 13) {
           console.log(`[${username.val()}] ${msgBody.val()}`);
+          channel.push("new:message", {
+            user: username.val(),
+            body: msgBody.val()
+          });
           msgBody.val("");
         }
       })
