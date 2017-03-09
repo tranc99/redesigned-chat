@@ -19,3 +19,24 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import socket from "./socket"
+
+class App {
+  static init() {
+    var username = $("#username");
+    var msgBody = $("#message");
+    console.log("Initialized");
+
+    msgBody.off("keypress")
+      .on("keypress", e => {
+        if (e.keyCode == 13) {
+          console.log(`[${username.val()}] ${msgBody.val()}`);
+          msgBody.val("");
+        }
+      })
+  }
+}
+
+$( () => App.init() );
+$(() => alert("document is ready!"));
+export default App;
