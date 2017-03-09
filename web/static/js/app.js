@@ -54,7 +54,14 @@ class App {
   // render messages
   static renderMessage(msg) {
     var messages = $("#messages");
-    messages.append(`<p><b>[${msg.user}]</b>: ${msg.body}</p>`)
+    var user = this.sanitize(msg.user || "New User");
+    var body = this.sanitize(msg.body);
+    messages.append(`<p><b>[$user]</b>: ${body}</p>`)
+  }
+
+  // sanitize input
+  static sanitize(str) {
+    return $("<div />").text(str).html();
   }
 }
 
