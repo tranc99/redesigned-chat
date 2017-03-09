@@ -8,3 +8,8 @@
   <label>Username</label>
   <input type="text" id="username" class="form-control">
 </div>
+
+<div class="col-md-6 form-group">
+  <label>Message</label>
+  <input type="text" id="message" class="form-control">
+</div>
