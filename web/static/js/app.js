@@ -45,7 +45,10 @@ class App {
           });
           msgBody.val("");
         }
-      })
+      });
+
+      // receive other channel broadcasts
+      channel.on("new:message", msg => console.log(msg.user, msg.body));
   }
 }
 
