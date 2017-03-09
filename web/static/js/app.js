@@ -27,6 +27,14 @@ class App {
     var msgBody = $("#message");
     console.log("Initialized");
 
+    // join the channel
+    socket.onClose( e => console.log("Closed socket connection"));
+    var channel = socket.channel("rooms:lobby", {});
+
+    channel.join()
+    .receive("ok", resp => { console.log("Joined successfully", resp) })
+    .receive("error", resp => { console.log("Unable to join the channel", resp) })
+
     msgBody.off("keypress")
       .on("keypress", e => {
         if (e.keyCode == 13) {
