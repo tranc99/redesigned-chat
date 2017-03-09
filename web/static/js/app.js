@@ -48,7 +48,13 @@ class App {
       });
 
       // receive other channel broadcasts
-      channel.on("new:message", msg => console.log(msg.user, msg.body));
+      channel.on("new:message", msg => this.renderMessage(msg));
+  }
+
+  // render messages
+  static renderMessage(msg) {
+    var messages = $("#messages");
+    messages.append(`<p><b>[${msg.user}]</b>: ${msg.body}</p>`)
   }
 }
 
